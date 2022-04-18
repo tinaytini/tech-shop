@@ -1,9 +1,9 @@
 import "./Header.scss";
-import { ReactComponent as Facebook } from '../assets/images/socials/facebook.svg';
-import { ReactComponent as Instagram } from '../assets/images/socials/instagram.svg';
-import { ReactComponent as Logo } from '../assets/images/logo1.svg';
-import { ReactComponent as Search } from '../assets/images/icons/search.svg'
-import { ReactComponent as ShopCart } from '../assets/images/icons/shop-cart.svg'
+import { ReactComponent as Facebook } from '../../assets/images/socials/facebook.svg';
+import { ReactComponent as Instagram } from '../../assets/images/socials/instagram.svg';
+import { ReactComponent as Logo } from '../../assets/images/logo1.svg';
+import { ReactComponent as Search } from '../../assets/images/icons/search.svg';
+import { ReactComponent as ShopCart } from '../../assets/images/icons/shop-cart.svg';
 
 function Header() {
     return (
