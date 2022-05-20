@@ -1,0 +1,99 @@
+@mixin display-grid {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.footer {
+    width: 100%;
+    background: #020203;
+    color: #fff;
+    bottom: 0;
+    margin-bottom: -200px;
+
+    .top {
+        justify-content: space-between;
+        align-items: center;
+        justify-items: center;
+        
+
+        .left {
+            margin-right: 73px;
+            line-height: 4em;
+        }
+
+        .title {
+            font-weight: 500;
+            font-size: 38px;
+        }
+        .subtitle {
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 21px;
+        }
+
+        .right {
+            @include display-grid;
+            align-items: center;
+            justify-content: space-between;
+
+                label>input {
+                border: 2px solid #FFFFFF;
+                box-sizing: border-box;
+                border-radius: 4px;
+                width: 380px;
+                height: 50px;
+                background: #000;
+                padding: 5px;
+                margin-right: 23px;
+                color: #fff;
+            }
+    
+                .btn {
+                    background: #0156FF;
+                    border-radius: 50px;
+                    font-weight: 600;
+                    font-size: 14px;
+                    line-height: 21px;     
+                    color: #fff;
+                    padding: 16px 40px;
+                }
+        }
+        
+    }
+    .content {
+        margin: 0 auto;
+
+        .top {
+            @include display-grid;
+            padding: 47px 0;
+        }
+    }
+
+}
+
+.main {
+    @include display-grid;
+    justify-content: space-between;
+    line-height: 19px;
+    font-size: 13px;
+    padding: 36px 0;
+    // margin-top: 45px;
+}
+
+.bottom {
+    width: 100%;
+    border-top: 1px solid rgba(204, 204, 204, .2);
+    @include display-grid;
+    justify-content: space-between;
+    align-items: center;
+    justify-items: center;
+    column-gap: 263px;
+    padding: 19px 0;
+    margin: 0 auto;
+
+    .socials, .payment {
+        @include display-grid;
+        column-gap: 10px;
+    }
+
+}

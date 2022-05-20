@@ -1,0 +1,90 @@
+
+
+
+.cart {
+    width: 1166px;
+    height: 330px;
+    background: #FFFFFF;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.14);
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 45px;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    padding: 36px;
+    color: #000;
+    position: relative;
+    margin: 5px 0;
+
+    .inStock {
+        position: absolute;
+        top: 20px;
+        right: 52px;
+    }
+
+    img {
+        width: 250px;
+        height: 250px;
+    }
+
+
+
+    .middle {
+        display: grid;
+        grid-auto-flow: row;
+        font-size: 13px;
+        line-height: 20px;
+        row-gap: 11px;
+        justify-items: start;
+
+        .title {
+            font-weight: 700;
+        }
+        .desc {
+            text-overflow: clip;
+        }
+
+        .oldPrice {
+            font-size: 14px;
+            font-weight: 400;
+            color: #666;
+            text-decoration: line-through;
+        }
+
+        .newPrice {
+            font-size: 20px;
+            font-weight: 600;
+            color: #000;
+        }
+        .addToCart {
+            padding: 8px 20px;
+            border:  2px solid #0156FF;
+            border-radius: 50px;
+            color: #0156FF;
+            font-weight: 600;
+            font-size: 14px;
+        }
+    }
+
+    .right {
+        display: grid;
+        grid-auto-flow: row;
+        row-gap: 10px;
+        font-size: 12px;
+        line-height: 18px;
+
+
+        .details {
+            display: grid;
+            grid-auto-flow: column;
+            column-gap: 10px;
+        }
+
+    }
+
+    .icons  {
+        align-self: flex-end;
+    }
+
+}

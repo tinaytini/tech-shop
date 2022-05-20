@@ -1,58 +1,63 @@
-import "./Header.scss";
+import clsx from 'clsx';
+import { Link } from 'react-router-dom';
 import { ReactComponent as Facebook } from '../../assets/images/socials/facebook.svg';
 import { ReactComponent as Instagram } from '../../assets/images/socials/instagram.svg';
 import { ReactComponent as Logo } from '../../assets/images/logo1.svg';
 import { ReactComponent as Search } from '../../assets/images/icons/search.svg';
 import { ReactComponent as ShopCart } from '../../assets/images/icons/shop-cart.svg';
+import { ReactComponent as Dropdown } from '../../assets/images/dropdown.svg'
+import scss from "./Header.module.scss";
 
 function Header() {
     return (
-        <header className="header">
-            <div className="shop-info">
-                <div className="container shop-info__content">
-                    <div className="open__time">
+        <header className={scss.wrapper}>
+            <div className={scss.shopInfo}>
+                <div className={clsx(scss.container, scss.content)}>
+                    <div className={scss.openTime}>
                         <span>Mon-Thu: </span>  
                         9:00 AM - 5:30 PM
-                        <img src="/assets/images/dropdown.svg" alt="" />
+                        < Dropdown className={scss.dropdown}/>
                     </div>
                         
-                    <div className="header__address">
+                    <div className={scss.address}>
                         <span>
                             Visit our showroom in 1234 Street Adress City Address, 1234
                         </span>  
-                        <a className="address__link">  Contact Us</a>
+                        <a className={scss.addressLink}>  Contact Us</a>
                     </div>
-                    <div className="header__contact">
+                    <div className={scss.contact}>
                         <a href="tel:+(00) 1234 5678">Call Us: (00) 1234 5678</a>
-                        <a href="https://www.facebook.com/" className="header__facebook">
+                        <a href="https://www.facebook.com/" className={scss.facebook}>
                             <Facebook />
                         </a>
-                        <a href="https://www.instagram.com/" className="header__instagram">
+                        <a href="https://www.instagram.com/" className={scss.instagram}>
                             <Instagram />
                         </a>
                     </div>
                 </div>
             </div>
-            <div className="container main-header">
-                <nav className="nav-links">
-                    < Logo className="logo" />
-                    <a href="" className="link">Laptops</a>
-                    <a href="" className="link">Desktop PCs</a>
-                    <a href="" className="link">Networking Devices</a>
-                    <a href="" className="link">Printers & Scanners</a>
-                    <a href="" className="link">PC Parts</a>
-                    <a href="" className="link">All Other Products</a>
-                    <a href="" className="link">Repairs</a>
-                    <button className="deals__btn">Our Deals</button>
+            <div className={clsx(scss.container, scss.mainHeader)}>
+                <nav className={scss.navLinks}>
+                    <Link to="/">
+                        < Logo className={scss.logo} />
+                    </Link>
+                    <Link to="/category/laptops" className={scss.link}>Laptops</Link>
+                    <Link to="/category/desktop-PC" className={scss.link}>Desktop PCs</Link>
+                    <Link to="/category/networking-devices" className={scss.link}>Networking Devices</Link>
+                    <Link to="/category/printers-scanners" className={scss.link}>Printers & Scanners</Link>
+                    <Link to="/category/pc-parts" className={scss.link}>PC Parts</Link>
+                    <Link to="/category/other-products" className={scss.link}>All Other Products</Link>
+                    <Link to="/repaires" className={scss.link}>Repairs</Link>
+                    <button className={scss.deals}>Our Deals</button>
                 </nav>
-                <div className="actions">
-                    <button className="search__btn">
-                        < Search className="search" />
+                <div className={scss.actions}>
+                    <button className={scss.searchBtn}>
+                        < Search className={scss.search} />
                     </button>
-                    <button className="shop-cart__btn">
-                    < ShopCart className="shop-cart" />
+                    <button className={scss.shopCartBtn}>
+                        < ShopCart className={scss.shopCart} />
                     </button>
-                    <img className="profile" src="https://kb.rspca.org.au/wp-content/uploads/2018/11/golder-retriever-puppy.jpeg" alt="#" />
+                    <img className={scss.profile} src="https://kb.rspca.org.au/wp-content/uploads/2018/11/golder-retriever-puppy.jpeg" alt="#" />
                 </div>
             </div>
         </header>

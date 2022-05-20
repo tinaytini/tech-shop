@@ -1,0 +1,64 @@
+$slideColor: #979da8;
+$slideFocusColor: #252931;
+$adClr: #F5F7FF;
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+.cards {
+    position: relative;
+}
+.wrapper {
+    display: grid;
+    width: 1400px;
+    margin: 0 auto;
+    // grid-template-columns: repeat(5, 1fr);
+    // justify-content: center;
+    // justify-items: center;
+    column-gap: 5px;
+}
+.slideLeft, .slideRight {
+    position: absolute;
+    top: 50%;
+    border: none;
+    background-color: transparent;
+    transform: translateY(-50%);
+}
+.slideLeft {
+    left: 0;
+    color: $slideColor;
+}
+.slideLeft:focus {
+    color: $slideFocusColor;
+}
+
+.slideRight {
+    right: 0;
+    color: $slideColor;
+}
+
+.slideRight:focus {
+    color: $slideFocusColor;
+}
+
+.ad {
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 49px;
+    background-color: $adClr;
+    padding: 21px 0;
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+
+    .logo {
+        margin-right: 20px;
+    }
+    a {
+        text-decoration: underline;
+    }
+}
