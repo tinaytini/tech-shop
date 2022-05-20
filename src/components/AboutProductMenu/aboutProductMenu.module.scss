@@ -1,0 +1,51 @@
+.productDetails {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    justify-content: space-between;
+    height: 110px;
+    align-items: center;
+
+    .productMenu, .payments {
+        display: grid;
+        grid-auto-flow: column;
+        column-gap: 20px;
+        justify-content: start;
+        align-items: center;
+        justify-items: center;
+        font-weight: 600;
+        font-size: 14px;
+        color: #666666;
+    }
+    
+    .payments {
+        justify-content: end;
+        font-weight: 400;
+        font-size: 14px;
+        color: #000;
+
+
+        label>input {
+            padding: 11px;
+            width: 60px;
+            height: 40px;
+            font-weight: 600;
+            font-size: 13px;
+            background: #EBEBEB;
+            border-radius: 6px;
+            border: none;
+        }
+        button {
+            padding: 16px 34px;
+            border-radius: 50px;
+        }
+        .addToCart {
+            background: #0156FF;
+            font-weight: 600;
+            font-size: 14px;
+            color: #fff;
+        }
+        .paypal {
+            background-color: #FFB800;
+        }
+    }
+}

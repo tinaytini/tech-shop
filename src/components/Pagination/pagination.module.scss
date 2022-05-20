@@ -1,0 +1,22 @@
+.pagination {
+    margin: 50px 0;
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: center;
+    column-gap: 20px;
+
+    .pageLink {
+        padding: 5px 15px;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+
+        .pageLink:active {
+            padding: 5px 15px;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            background-color: #0156FF;
+            color: #fff;
+        }
+    }
+    
+}

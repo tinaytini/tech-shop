@@ -1,0 +1,107 @@
+.content {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    align-items: start;
+    margin: 70px 0;
+
+    .sendMessage {
+        display: grid;
+        grid-auto-flow: row;
+
+        h1 {
+            margin: 0 0 30px 0;
+        }
+        .letter {
+            line-height: 36px;
+            font-weight: 300;
+            font-size: 16px;
+        }
+    }
+
+    .forms {
+        display: grid;
+        grid-auto-flow: row;
+        row-gap: 35px;
+        margin: 30px 0 0 0;
+
+        .field,
+        .fieldText {
+            display: grid;
+            grid-auto-flow: row;
+            justify-items: start;
+            align-items: center;
+            justify-content: start;
+            row-gap: 5px;
+
+
+            span {
+                font-weight: 600;
+                font-size: 13px;
+            }
+
+            input {
+                background: #FFFFFF;
+                border: 1px solid #8C8C8C;
+                box-sizing: border-box;
+                border-radius: 4px;
+                height: 40px;
+                width: 550px;
+                padding: 10px 17px;
+                font-size: 14px;
+                color: #000;
+            }
+
+        }
+
+        .fieldText {
+
+            input {
+                text-align: left;
+                width: 925px;
+                height: 236px;
+                border: 1px solid #8C8C8C;
+                border-radius: 4px;
+            }
+        }
+
+        button {
+            background: #0156FF;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 21px;
+            color: #fff;
+            padding: 10px 40px;
+            width: 170px;
+        }
+    }
+
+    .contacts {
+        width: 411px;
+        height: 404px;
+        background-color: #F5F9FF;
+        padding: 10px;
+
+        .box {
+            display: grid;
+            grid-auto-flow: row;
+            row-gap: 20px;
+
+            h3 {
+                display: grid;
+                grid-auto-flow: column;
+                justify-content: start;
+                align-items: center;
+                column-gap: 8px;
+                font-size: 18px;
+            }
+            p {
+                padding: 0 0 0 46px;
+                font-size: 13px;
+            }
+        }
+
+        
+    }
+}

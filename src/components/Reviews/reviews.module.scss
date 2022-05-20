@@ -1,0 +1,57 @@
+.review {
+    margin: 0 auto;
+    height: 310px;
+    max-width: 1160px;
+    background: #F5F7FF;
+    padding: 49px 119px;
+    position: relative;
+
+    .comments {
+        display: grid;
+        grid-auto-flow: column;
+        column-gap: 26px;
+        align-items: center;
+
+        
+
+        .comment {
+            font-size: 18px;
+            line-height: 27px;
+        }
+    }
+    
+    .author {
+        text-align: end;
+    }
+
+    .pagination {
+        list-style: none;
+        display: grid;
+        grid-auto-flow: column;
+        column-gap: 10px;
+        justify-content: end;
+        position: absolute;
+        bottom: 63px;
+        right: 134px;
+    }
+
+    li>button:before {
+        opacity: 1;
+        font-size: 12px;
+        color: #ccc;
+    }
+
+}
+.btn {
+    padding: 8px 26px;
+    border-radius: 50px;
+    border: 2px solid #0156FF;
+    font-size: 14px;
+    line-height: 21px;
+    color: #0156FF;
+    font-weight: 600;
+    position: absolute;
+    bottom: 49px;
+}
+
+

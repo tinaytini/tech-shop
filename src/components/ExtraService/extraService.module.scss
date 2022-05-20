@@ -1,0 +1,21 @@
+.services {
+    display: grid;
+    grid-template-columns: repeat(3, 265px);
+    column-gap: 130px;
+    margin: 61px auto;
+    text-align: center;
+    justify-content: space-between;
+    margin-top: 100px;
+    
+    .title {
+        line-height: 60px;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .desc {
+        font-size: 14px;
+        opacity: .7;
+        font-weight: 400;
+    }
+}

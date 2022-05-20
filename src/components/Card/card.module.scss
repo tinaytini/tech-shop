@@ -1,0 +1,94 @@
+$gray: #8c8c8c;
+$darkGray: #666;
+$textRed: #C94D3F;
+$starColor: #E9A426;
+$inStockClr: #78A962;
+
+
+.card {
+    width: 235px;
+    padding: 25px 0px;
+    display: grid;
+    grid-auto-flow: row;
+    justify-content: center;
+    justify-items: start;
+    align-content: space-between;
+    align-items: baseline;
+
+
+    .status {
+        display: grid;
+        grid-auto-flow: column;
+        column-gap: 5px;
+        justify-content: start;
+        align-items: center;
+        margin-bottom: 7px;
+    }
+    .inStock {
+        color: $inStockClr;
+    }
+
+    .checkStock {
+        color: $textRed;
+    }
+    span {
+        font-size: 10px;
+    }
+
+    .image {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+    }
+
+    .review {
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: start;
+        align-items: center;
+        column-gap: 5px;
+
+        .stars {
+            display: grid;
+            grid-auto-flow: column;
+            column-gap: 2px;
+            padding: 0;
+            margin: 16px 0;
+        }
+        .star {
+            color: $starColor;
+        }
+        .star:nth-child(5) {
+            color: $gray;
+        }
+        span {
+            color: $gray
+        }
+    }
+    
+
+    .desc {
+        display: grid;
+
+
+        .description {
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 20px;
+        }
+        p {
+            margin: 0;
+        }
+        .oldPrice {
+            color: $darkGray;
+            text-decoration: line-through;
+        }
+        .price {
+            color: #000;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+    }
+    
+}

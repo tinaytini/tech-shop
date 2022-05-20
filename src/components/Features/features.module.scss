@@ -1,0 +1,44 @@
+.features {
+    background: radial-gradient(50% 50% at 50% 50%, #242528 0%, #040404 100%);
+    color: #fff;
+    padding: 76px 0;
+
+    .top {
+        text-align: center;
+
+        .subtitle {
+            width: 418px;
+            margin: 28px auto;
+        }
+    }
+
+    .bottom {
+        display: grid;
+        grid-template-columns: repeat(4, 254px);
+        column-gap: 47px;
+        text-align: center;
+        justify-content: space-between;
+        margin: 80px 0;
+
+        li {
+            display: grid;
+            justify-items: center;
+
+        }
+        span {
+            width: 136px;
+            height: 136px;
+            border-radius: 100px;
+            background-color: #000;
+            position: relative;
+            margin-bottom: 28px;
+            
+            img {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        };
+    }
+}

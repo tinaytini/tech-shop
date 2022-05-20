@@ -6,12 +6,15 @@ a, button, img {
     cursor: pointer;
     text-decoration: none;
 }
+.header {
+    min-width: 100%
+}
 .container {
     max-width: 1400px;
     margin: 0 auto;
 };
 
-.shop-info {
+.shopInfo {
     background-color: $bkg-color;
     width: 100%;
     font-size: 12px;
@@ -23,26 +26,29 @@ a, button, img {
     a {
         color: $white;
     }
-    .shop-info__content {
+    .content {
         display: grid;
         grid-auto-flow: column;
         align-content: center;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
         justify-items: center;
         font-weight: 600;
         height: 44px;
     }
-    .open__time {
+    .openTime {
         color: $white;
         display: grid;
         grid-auto-flow: column;
         align-items: center;
     }
-    .address__link {
+    .addressLink {
         text-decoration: underline;
     }
-    .header__contact {
+    .dropdown {
+        cursor: pointer;
+    }
+    .contact {
 
         display: grid;
         grid-auto-flow: column;
@@ -51,28 +57,28 @@ a, button, img {
     }
 }
 
-.main-header {
+.mainHeader {
     background-color: $white;
     display: grid;
     grid-auto-flow: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     justify-items: center;
     font-size: 14px;
     font-weight: 600;
     height: 92px;
 
-    .nav-links {
+    .navLinks {
         display: grid;
         grid-auto-flow: column;
         align-items: center;
         justify-items: center;
         column-gap: 25px;
 
-        .nav-links:nth-child(2) {
+        .navLinks:nth-child(2) {
             margin-left: 20px;
         }
-        .deals__btn {
+        .deals {
             padding: 8px 26px;
             border: 2px solid #0156FF;
             color: #0156FF;
@@ -94,6 +100,7 @@ a, button, img {
         grid-auto-flow: column;
         align-items: center;
         justify-items: center;
+        column-gap: 20px;
     }
 
     .profile {
