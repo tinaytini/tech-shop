@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from 'react-router-dom'
 import axios from "axios";
+import { useStore } from "../../context/context";
 import AboutProductMenu from "../../components/AboutProductMenu/AboutProductMenu";
 import AboutProductDetail from "../../components/AboutProductDetails/AboutProductDetail";
 import AboutProductChip from "../../components/AboutProductChip/AboutProductChip";
@@ -10,25 +11,12 @@ import ExtraService from '../../components/ExtraService/ExtraService'
 
 function AboutProductPage() {
     const { id } = useParams()
-    const [product, setProduct] = useState([])
-
-
-
     const [details, setDetails] = useState('')
-
-
-    // const showDetails = (key) => {
-    //     setDetails((prevState) => ({
-    //         ...prevState, [key]: !details[key]
-    //     }))
-    // }
-
-
-
+    const {products, setProducts} =  useStore
 
     const getProducts = async () => {
         const { data } = await axios.get(`http://localhost:3004/products/${id}`)
-        setProduct(data)
+        setProducts(data)
     }
     useEffect(() => {
         getProducts()
@@ -38,13 +26,13 @@ function AboutProductPage() {
         <div>
             <AboutProductMenu 
             setDetails={setDetails}
-            product={product}
+            product={products}
             />
             <AboutProductDetail 
-                title ={product.title}
-                desc={product.description}
+                title ={products.title}
+                desc={products.description}
                 details={details}
-                image={product.image}/>
+                image={products.image}/>
             <AboutProductChip/>
             <Support/>
             <Features/>
