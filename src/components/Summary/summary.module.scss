@@ -1,0 +1,46 @@
+.summary {
+    background: #F5F9FF;
+    padding: 32px;
+
+
+}
+
+.textField {
+    box-sizing: border-box;
+    display: grid;
+    grid-auto-flow: row;
+    row-gap: 10px;
+    margin-top: 15px;
+
+    
+    span {
+        font-weight: 600;
+        font-size: 13px;
+        color: #000;
+    }
+    input {
+        height: 50px;
+        border: 1px solid #8C8C8C;
+        border-radius: 4px;
+        padding: 10px;
+    }
+
+    .radio {
+        display: grid;
+        grid-auto-flow: column;
+        align-items: center;
+        justify-content: start;
+        column-gap: 5px;
+        font-size: 14px;
+    }
+}
+
+.applyBtn {
+    width: 100%;
+    
+    border: 1px solid #0156FF;
+    border-radius: 50px;
+    height: 50px;
+    color: #0156FF;
+    font-weight: 600;
+}
