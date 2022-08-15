@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "../../components/Card/Card";
+import { useStore } from "../../context/context";
 import RowStyleCard from "../../components/RowStyleCard/RowStyleCard";
 import scss from '../CategoryPage/categoryPage.module.scss';
 import { ReactComponent as Column } from '../../assets/images/icons/column-view.svg';
@@ -25,36 +26,39 @@ const initialFilters = {
 
 
 function CategoryPage() {
-    const routs = [
-        'Home', 'Laptops', 'Everyday use Notebooks', 'MSI PS Series'
-    ]
     const [isRowView, setIsRowView] = useState(false);
     const [colorArr, setColorArr] = useState([]);
-    const [products, setProducts] = useState([]);
     const [brandArr, setBrandArr] = useState([])
     const [priceArr, setPriceArr] = useState([])
     const [typeArr, setTypeArr] = useState([]);
-
     const [currentPage, setCurrentPage] = useState(1);
-    const postsPerPage = 10;
-
-    const indexOfLastPost = currentPage * postsPerPage;
-    const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPosts = products.slice(indexOfFirstPost, indexOfLastPost);
-    const paginate = pageNumber => setCurrentPage(pageNumber);
-
     const [selectedFilters, setAllFilters] = useState(initialFilters)
 
-    const handleFilterClick = (key, value) => {
-        setAllFilters(prevState => ({
-            ...prevState,
-            [key]: value,
-        }))
+    const { products, setProducts } = useStore()
+
+    const fetchAllData = async () => {
+        const [resProducts, resTypes, resColors, resBrands] = await Promise.all([
+            axios.get('http://localhost:3004/products?'),
+            axios.get('http://localhost:3004/types'),
+            axios.get('http://localhost:3004/colors'),
+            axios.get('http://localhost:3004/brands'),
+        ])
+        //axios returns object
+        setProducts(resProducts.data)
+        setColorArr(resColors.data)
+        setTypeArr(resTypes.data)
+        setBrandArr(resBrands.data)
     }
 
-    const clearFilter = () => {
-        setAllFilters(initialFilters)
-        getProducts()
+    useEffect(() => {
+        fetchAllData()
+    }, [])
+
+    const getProductsPrice = async () => {
+        const { data } = await axios.get('http://localhost:3004/products?');
+        setProducts(data)
+        const prices = data.map(d => d.price)
+        setPriceArr(prices)
     }
 
     const [openFilter, setOpenFilter] = useState({
@@ -71,35 +75,17 @@ function CategoryPage() {
         }))
     }
 
-    const getProducts = async () => {
-        const { data } = await axios.get('http://localhost:3004/products?');
-        setProducts(data)
+    const handleFilterClick = (key, value) => {
+        setAllFilters(prevState => ({
+            ...prevState,
+            [key]: value,
+        }))
     }
 
-    const getTypeData = async () => {
-        const { data } = await axios.get('http://localhost:3004/types')
-        setTypeArr(data)
-    }
-
-    const getPrices = async () => {
-        const { data } = await axios.get('http://localhost:3004/products')
-        const prices = data.map(d => d.price)
-        setPriceArr(prices)
-    }
-
-    const pricesFilter = Array.from({ length: 8 }).map((_, i) => {
-        const num = 1000 * (i + 1)
-        return num
-    })
-
-    const getColoredData = async () => {
-        const { data } = await axios.get('http://localhost:3004/colors');
-        setColorArr(data)
-    }
-
-    const getBrands = async () => {
-        const { data } = await axios.get('http://localhost:3004/brands');
-        setBrandArr(data)
+    //clear button
+    const clearFilter = () => {
+        setAllFilters(initialFilters)
+        getProductsPrice()
     }
 
     const getFilteredProducts = async () => {
@@ -115,27 +101,23 @@ function CategoryPage() {
         setProducts(data)
     }
 
-    useEffect(() => {
-        getTypeData()
-        getBrands()
-        getColoredData()
-        getPrices()
-    }, [])
+    const pricesFilter = Array.from({ length: 8 }).map((_, i) => {
+        const num = 1000 * (i + 1)
+        return num
+    })
 
-    useEffect(() => {
-        getProducts()
-    }, [])
+    //pagination
+    const postsPerPage = 10;
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentPosts = products.slice(indexOfFirstPost, indexOfLastPost);
+    const paginate = pageNumber => setCurrentPage(pageNumber);
+    /*-----------------------------------------------------------------*/
+
+
 
     return (
         <div className={clsx(scss.wrapper, 'container')}>
-            <div className={scss.routs}>
-                {routs.map(r => (
-                    <div key={r}>
-                        <div className="route">{r}</div>
-                        <span>›</span>
-                    </div>
-                ))}
-            </div>
             <h2 className={scss.categoryName}>MSI PS Series (20)</h2>
             <div className={scss.settings}>
                 <button className={scss.back}>‹  Back</button>
@@ -204,44 +186,44 @@ function CategoryPage() {
                     />
 
                 </div>
-                
-                    <ul className={clsx(!isRowView ? scss.columnCardWrap : scss.rowCardWrap)}>
-                        {currentPosts.map(product => (
-                            <>
-                                {!isRowView ? (
-                                    <li>
-                                        <Link to={`/product/${product.id}`} key={product.id}>
-                                            <Card 
-                                                key={product.id}
-                                                isAvailable={product.available}
-                                                cardImg={product.image}
-                                                title={product.title}
-                                                oldPrice={product.price}
-                                                newPrice={product.price - (product.price * (product.sale / 100))}
 
-                                            />
-                                        </Link>
-                                    </li>
+                <ul className={clsx(!isRowView ? scss.columnCardWrap : scss.rowCardWrap)}>
+                    {currentPosts.map(product => (
+                        <div key={product.id}>
+                            {!isRowView ? (
 
-                                ) : (
-                                    <li className={scss.rowCardWrap}>
-                                        <Link to={`/product/${product.id}`} key={product.id}>
-                                            <RowStyleCard
-                                                key={product.id}
-                                                isAvailable={product.available}
-                                                cardImg={product.image}
-                                                title={product.title}
-                                                desc={product.description}
-                                                oldPrice={product.price}
-                                                newPrice={product.price - (product.price * (product.sale / 100))}
-                                            />
-                                        </Link>
-                                    </li>
-                                )}
-                            </>
-                        ))}
-                    </ul>
-                
+                                <Link to={`/product/${product.id}`} key={product.id}>
+                                    <Card
+                                        key={product?.id}
+                                        isAvailable={product?.available}
+                                        cardImg={product?.image}
+                                        title={product?.title}
+                                        oldPrice={product?.price}
+                                        newPrice={product?.price - (product.price * (product.sale / 100))}
+
+                                    />
+                                </Link>
+
+
+                            ) : (
+                                <li className={scss.rowCardWrap}>
+                                    <Link to={`/product/${product.id}`} key={product.id}>
+                                        <RowStyleCard
+                                            key={product?.id}
+                                            isAvailable={product?.available}
+                                            cardImg={product?.image}
+                                            title={product?.title}
+                                            desc={product?.description}
+                                            oldPrice={product?.price}
+                                            newPrice={product?.price - (product.price * (product.sale / 100))}
+                                        />
+                                    </Link>
+                                </li>
+                            )}
+                        </div>
+                    ))}
+                </ul>
+
             </div>
             <Pagination
                 postsPerPage={postsPerPage}
