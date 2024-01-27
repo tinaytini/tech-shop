@@ -7,23 +7,63 @@ import { ReactComponent as Search } from '../../assets/images/icons/search.svg';
 import { ReactComponent as ShopCart } from '../../assets/images/icons/shop-cart.svg';
 import { ReactComponent as Dropdown } from '../../assets/images/dropdown.svg'
 import scss from "./Header.module.scss";
+import { useState } from 'react';
+import InputSearch  from '../InputSearch/InputSearch';
+
+const menu = [
+    {
+        title: 'Laptops',
+        link: 'laptops',
+    },
+    {
+        title: 'Desktop PCs',
+        link: 'desktop-PC',
+    },
+    {
+        title: 'Networking Devices',
+        link: 'networking-devices',
+    },
+    {
+        title: 'Printers & Scanners',
+        link: 'printers-scanners',
+    },
+    {
+        title: 'PC Parts',
+        link: 'pc-parts'
+    },
+    {
+        title: 'All Other Products',
+        link: 'other-products',
+    },
+    {
+        title: 'Repairs',
+        link: 'repaires'
+    }
+]
 
 function Header() {
+    const [showSearch, setShowSearch] = useState(false)
+
+    const handleSearchBtn = () => {
+        setShowSearch(!showSearch)
+    }
+
+
     return (
         <header className={scss.wrapper}>
             <div className={scss.shopInfo}>
                 <div className={clsx(scss.container, scss.content)}>
                     <div className={scss.openTime}>
-                        <span>Mon-Thu: </span>  
+                        <span>Mon-Thu: </span>
                         9:00 AM - 5:30 PM
-                        < Dropdown className={scss.dropdown}/>
+                        < Dropdown className={scss.dropdown} />
                     </div>
-                        
+
                     <div className={scss.address}>
                         <span>
                             Visit our showroom in 1234 Street Adress City Address, 1234
-                        </span>  
-                        <a className={scss.addressLink}>  Contact Us</a>
+                        </span>
+                        <a className={scss.addressLink}>Contact Us</a>
                     </div>
                     <div className={scss.contact}>
                         <a href="tel:+(00) 1234 5678">Call Us: (00) 1234 5678</a>
@@ -37,21 +77,20 @@ function Header() {
                 </div>
             </div>
             <div className={clsx(scss.container, scss.mainHeader)}>
-                <nav className={scss.navLinks}>
-                    <Link to="/">
-                        < Logo className={scss.logo} />
-                    </Link>
-                    <Link to="/category/laptops" className={scss.link}>Laptops</Link>
-                    <Link to="/category/desktop-PC" className={scss.link}>Desktop PCs</Link>
-                    <Link to="/category/networking-devices" className={scss.link}>Networking Devices</Link>
-                    <Link to="/category/printers-scanners" className={scss.link}>Printers & Scanners</Link>
-                    <Link to="/category/pc-parts" className={scss.link}>PC Parts</Link>
-                    <Link to="/category/other-products" className={scss.link}>All Other Products</Link>
-                    <Link to="/repaires" className={scss.link}>Repairs</Link>
-                    <button className={scss.deals}>Our Deals</button>
-                </nav>
+                <Link to="/">
+                    < Logo className={scss.logo} />
+                </Link>
+                {showSearch ? (<InputSearch />) :
+                    (<nav className={scss.navLinks}>
+                        {menu.map((item) => (
+                            <Link key={item.title} to={`/category/${item.link}`} className={scss.link}>{item.title}</Link>
+                        ))}
+                        <button className={scss.deals}>Our Deals</button>
+                    </nav>)
+                }
+
                 <div className={scss.actions}>
-                    <button className={scss.searchBtn}>
+                    <button className={scss.searchBtn} onClick={handleSearchBtn}>
                         < Search className={scss.search} />
                     </button>
                     <button className={scss.shopCartBtn}>

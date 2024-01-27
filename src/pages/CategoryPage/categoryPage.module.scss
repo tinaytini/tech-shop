@@ -105,7 +105,7 @@ h3 {
     display: grid;
     grid-auto-flow: row;
     row-gap: 8px;
-
+    transition: max-heigth .25s ease-in-out;
 }
 .filterBlocks {
     display: grid;

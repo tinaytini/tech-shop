@@ -3,7 +3,7 @@
     {
       "id": 1,
       "title": "Lenovo",
-      "logoImg": "https://flyclipart.com/thumb2/lenovo-logo-png-transparent-vector-922779.png"
+      "logoImg": "./src/assets/images/brands/image-1.png"
     },
     {
       "id": 2,

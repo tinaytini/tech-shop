@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage';
 import AboutProductPage from './pages/AboutProductPage/AboutProductPage';
 import ContactPage from './pages/ContactPage/ContactPage';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
+import Card from './components/Card/Card'
 
 
 
@@ -26,7 +27,7 @@ function App() {
         <Header />
         <Routes>
           <Route 
-            path='/category/:slug' 
+            path='/category/:id' 
             element={
               <CategoryPage/>
             }/>
@@ -39,6 +40,7 @@ function App() {
             }/>
           <Route path='/contacts' element={<ContactPage />}/>
           <Route path='/register' element={<RegisterPage/>} />
+          <Route path='/category/:id/:slug' element={<Card/>}/>
         </Routes>
         <Footer />
       </StoreContext.Provider>
@@ -47,3 +49,5 @@ function App() {
 }
 
 export default App;
+
+

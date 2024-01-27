@@ -12,7 +12,7 @@ import ExtraService from '../../components/ExtraService/ExtraService'
 function AboutProductPage() {
     const { id } = useParams()
     const [details, setDetails] = useState('')
-    const {products, setProducts} =  useStore
+    const {products, setProducts} =  useStore([])
 
     const getProducts = async () => {
         const { data } = await axios.get(`http://localhost:3004/products/${id}`)

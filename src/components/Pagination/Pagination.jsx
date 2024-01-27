@@ -1,6 +1,4 @@
-import clsx from 'clsx';
-import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
 import scss from './pagination.module.scss'
 
 
@@ -16,7 +14,7 @@ function Pagination({ postsPerPage, totalPosts, paginate }) {
             <ul className={scss.pagination}>
                 {pageNumbers.map(number => (
                     <li key={number} className={scss.pageItem}>
-                        <a onClick={() => paginate(number)} href='!#' className={scss.pageLink}>
+                        <a onClick={() => paginate(number)} href='#' className={scss.pageLink}>
                             {number}
                         </a>
                     </li>

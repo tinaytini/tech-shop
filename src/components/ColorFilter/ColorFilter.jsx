@@ -5,7 +5,7 @@ import { ReactComponent as Open } from '../../assets/images/icons/up.svg';
 
 function ColorFilter({ dropFilter, openFilter, colorArr, selectedFilters, handleFilterClick }) {
     return (
-        <div>
+        <div className={scss.wrap}>
         <div onClick={() => dropFilter('color')} className={scss.titleBlock}>
             <h3 className={scss.title}>Color</h3>
             <Open className={clsx(scss.open, {
